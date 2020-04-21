@@ -5,6 +5,7 @@ import TransactionsRepository from '../repositories/TransactionsRepository'
 interface Response {
   id: string
 }
+
 class DeleteTransactionService {
   public async execute({ id }: Response): Promise<void> {
     const transactionsRepository = getCustomRepository(TransactionsRepository)
@@ -15,7 +16,7 @@ class DeleteTransactionService {
       throw new AppError('Certify your transaction ID.', 400)
     }
 
-    await transactionsRepository.delete(transaction)
+    await transactionsRepository.delete(transaction.id)
   }
 }
 
